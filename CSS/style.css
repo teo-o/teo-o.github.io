@@ -1,0 +1,238 @@
+@import url("https://fonts.googleapis.com/css2?family=Poor+Story&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  background-color: #F3F5FC;;
+  font-family: "Poor Story", cursive;
+}
+
+body{
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  display: flex;
+  position: absolute;
+  width: 60%;
+  height: 8.59375%;
+}
+
+.containerLogo{
+  display: flex;
+  position: relative;
+  width: 13.88888%;
+  height: 55.5555%;
+  margin-left:  4.629%;
+  top: 45.04545%;
+}
+
+.aLogo{
+  position: relative;
+  display: flex;
+  margin: 0 auto;
+}
+
+.logo {
+    width: 100%;
+    cursor: pointer;
+}
+
+main{
+  position: absolute;
+  display: block;
+  margin-top: 8.59375%;
+  margin-left: 16.666666666666666666666666666667%;
+  width: 75%;
+  height: 91.40625%;
+}
+
+.containerEncryp{
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 85%;
+}
+
+.areatxt{
+  display:flex;
+  position: relative;
+  width: 100%;
+  height: 80%;
+}
+
+#result {
+  position:relative;
+  margin-left: 15%;
+  background-color: white;
+}
+
+#result::selection {
+  background-color: transparent;
+}
+
+#shadow {
+  position: absolute;
+  visibility: visible;
+  width: 43%;
+  height: 110%;
+  text-align: center;
+  margin-left: 57.5%;
+}
+
+.muneco{
+  position: relative;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 5%;
+  width: 80%;
+  height: 70%;
+}
+
+#shadow h2{
+  margin-top: 5%;
+  color: #0A3871;
+}
+
+#caja-buttons{
+  display: inline-flex;
+  position: relative;
+  margin-top: 5%;
+  height: 10%;
+  width: 100%;
+}
+
+.buttons{
+  padding: 1.7% 4.5%;
+  border-radius: 5px;
+  margin-right: 11%;
+  font-size: 100%;
+}
+
+#encrypt-button {
+  background-color: #0A3871;
+  color: #F3F5FC;
+}
+
+#encrypt-button:hover{
+  background-color: #F3F5FC;
+  color: #0A3871;
+  border: 1px solid #0A3871;
+}
+
+#decrypt-button {
+  background-color: #F3F5FC;
+  color: #0A3871;
+  border: 1px solid #0A3871;
+}
+#decrypt-button:hover{
+  background-color: #0A3871;
+  color: #F3F5FC;
+}
+
+#copy-button {
+  background-color: whitesmoke;
+  color: #0A3871;
+  border: 1px solid #0A3871;
+}
+
+#copy-button:hover{
+  background-color: #0A3871;
+  color: #F3F5FC;
+}
+
+.space {
+  width: 22%;
+  height: auto;
+  display: inline-block;
+}
+
+#encrypted {
+  position: relative;
+  margin-left: 15%;
+}
+
+.texto{
+  width: 42.069444444444444444444444444444%;
+  height: 100%;
+  background: #F3F5FC;
+  margin-top: 1%;
+  border: none;
+  outline: none;
+  font-size: 200%;
+  color: #0A3871;
+  resize: none;
+  padding: 1.5%;
+}
+
+.containerDict{
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 85%;
+  margin-top: 1.8%;
+}
+
+.containerDict h2{
+  text-align: center;
+  color: #0A3871;
+}
+
+.containerDict p{
+  margin-top: 0.5%;
+}
+
+.areatxt1{
+  display:flex;
+  position: relative;
+  width: 100%;
+  height: 70%;
+}
+
+#caja-buttons1{
+  display: inline-flex;
+  position: relative;
+  margin-top: 4%;
+  height: 10%;
+  width: 100%;
+}
+
+#add-letter{
+  background-color: #0A3871;
+  color: #F3F5FC;
+}
+#add-letter:hover{
+  background-color: #F3F5FC;
+  color: #0A3871;
+  border: 1px solid #0A3871;
+}
+
+#search-letter {
+  background-color: #F3F5FC;
+  color: #0A3871;
+  border: 1px solid #0A3871;
+}
+#search-letter:hover{
+  background-color: #0A3871;
+  color: #F3F5FC;
+}
+
+.footer{
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 5%;
+}
+
+.footer p{
+  font-size: 120%;
+  text-align: center;
+  padding: 1.7%;
+}
+.footer a{
+  font-weight: 900;
+  text-decoration: none;
+  color: #0A3871;
+}

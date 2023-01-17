@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="CSS\style.css" />
+    <title>Encriptador de texto</title>
+  </head>
+  <body>
+    <header>
+      <div class="containerLogo">
+        <a href="index.html" class="aLogo"
+          ><img src="images\alura2.png" alt="Logo de alura" class="logo"
+        /></a>
+      </div>
+    </header>
+    <main>
+      <div class="containerEncryp">
+        <div class="areatxt">
+          <textarea
+            class="texto"
+            id="phrase"
+            placeholder="Ingrese el texto aqui"
+          ></textarea>
+          <textarea class="texto" id="result" placeholder="Resultado"></textarea>
+          <div class="result" id="shadow"> 
+            <img src="images\muneco.png" alt="muneco" class="muneco">
+            <h2>
+              Ningún mensaje fue encontrado
+            </h2>
+            <p>
+              Ingresa el texto que desees encriptar o desencriptar.
+            </p>
+          </div>
+        </div>
+        <div id="caja-buttons">
+          <input
+            type="button"
+            value="Encriptar"
+            class="buttons"
+            id="encrypt-button"
+          />
+          <input
+            type="button"
+            value="Desencriptar"
+            class="buttons"
+            id="decrypt-button"
+          />
+          <div class="space">
+
+          </div>
+          <input
+            type="button"
+            value="Copiar"
+            class="buttons"
+            id="copy-button"
+          />
+        </div>
+      </div>
+      <div class="containerDict">
+        <h2 id="dicty">Diccionario</h2>
+        <p>
+          Para agregar una nueva letra al diccionario sigue la regla de que su
+          value debe empezar con la letra que quieres agregar; si vas a
+          agregar la letra "b" su value debe empezar con "b" y asi sucesivamente.
+        </p>
+        <div class="areatxt1">
+          <textarea type="text" class="texto" id="letter" name="letter" placeholder="Letra"></textarea>
+          <textarea type="text" class="texto" id="encrypted" name="encrypted" placeholder="Valor cifrado"></textarea>
+        </div>
+        <div id="caja-buttons1">
+        <button type="button" class="buttons" id="add-letter">Añadir letra</button>
+        <button type="button" class="buttons" id="search-letter">Buscar letra</button>
+        </div>
+      </div>
+      <div class="footer">
+        <p>
+          Sitio desarrollado por <a href="https://www.linkedin.com/in/mateo-orozco-java/" target="_blank">Mateo Orozco</a> para el programa 
+          <a href="https://www.oracle.com/ar/education/oracle-next-education/" target="_blank"> 
+            Oracle One Next Education
+          </a>
+        </p>
+      </div>
+      <script src="app.js"></script>
+    </main>
+  </body>
+</html>
