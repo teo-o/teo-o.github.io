@@ -95,6 +95,7 @@ main{
   color: #0A3871;
 }
 
+
 #caja-buttons{
   display: inline-flex;
   position: relative;
@@ -113,6 +114,7 @@ main{
 #encrypt-button {
   background-color: #0A3871;
   color: #F3F5FC;
+  border: 1px solid #F3F5FC;
 }
 
 #encrypt-button:hover{
@@ -129,6 +131,7 @@ main{
 #decrypt-button:hover{
   background-color: #0A3871;
   color: #F3F5FC;
+  border: 1px solid #F3F5FC;
 }
 
 #copy-button {
@@ -140,6 +143,7 @@ main{
 #copy-button:hover{
   background-color: #0A3871;
   color: #F3F5FC;
+  border: 1px solid #F3F5FC;
 }
 
 .space {
@@ -193,7 +197,7 @@ main{
 #caja-buttons1{
   display: inline-flex;
   position: relative;
-  margin-top: 4%;
+  margin-top: 5%;
   height: 10%;
   width: 100%;
 }
@@ -201,6 +205,7 @@ main{
 #add-letter{
   background-color: #0A3871;
   color: #F3F5FC;
+  border: 1px solid #F3F5FC;
 }
 #add-letter:hover{
   background-color: #F3F5FC;
@@ -216,6 +221,7 @@ main{
 #search-letter:hover{
   background-color: #0A3871;
   color: #F3F5FC;
+  border: 1px solid #F3F5FC;
 }
 
 .footer{

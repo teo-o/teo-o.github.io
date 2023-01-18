@@ -42,8 +42,17 @@ class Encrypter {
                 Object.keys(Edictionary).forEach((key) => {
                     const value = Edictionary[key];
                     if (aux2[j] === key) {
-                        for (let k = 0; k < value.getEncrypted().length - 1; k += 1) {
-                            aux2.splice(j + 1, 1);
+                        var auxphrase = "";
+                        if (j + value.getEncrypted().length <= aux2.length) {
+                            for (let k = 0; k < value.getEncrypted().length; k++) {
+
+                                auxphrase += aux2[j + k]
+                            }
+                            if (auxphrase === value.getEncrypted()) {
+                                for (let k = 0; k < value.getEncrypted().length - 1; k += 1) {
+                                    aux2.splice(j + 1, 1);
+                                }
+                            }
                         }
                     }
                 });
@@ -59,6 +68,13 @@ class Encrypter {
             phrases[i] = letters[i];
         }
         return phrases;
+    }
+
+    isEmpty(phrase) {
+        if (phrase === '') {
+            return false;
+        }
+        return true;
     }
 
 }
@@ -84,23 +100,43 @@ function shadown() {
 
 document.getElementById('encrypt-button').addEventListener('click', () => {
     const phrase = document.getElementById('phrase').value;
-    const encrypted = encrypter.encrypter(phrase);
-    document.getElementById('result').innerHTML = encrypted.join(' ');
-    document.getElementById('shadow').style.visibility = 'hidden';
-    if (tel === 0) {
-        tel = 1;
-        shadow();
+    if (encrypter.isEmpty(phrase)) {
+        const encrypted = encrypter.encrypter(phrase);
+        document.getElementById('result').innerHTML = encrypted.join(' ');
+        document.getElementById('shadow').style.visibility = 'hidden';
+        if (tel === 0) {
+            tel = 1;
+            shadow();
+        }
+    }
+    else {
+        document.getElementById('phrase').style.borderRadius = "2%";
+        document.getElementById('phrase').style.border = "1px solid #0A3871";
+        setTimeout(function () {
+            document.getElementById('phrase').style.border = "";
+        }, 1000);
     }
 });
 
 document.getElementById('decrypt-button').addEventListener('click', () => {
     const phrase = document.getElementById('phrase').value;
-    const dencripted = encrypter.dencripter(phrase);
-    document.getElementById('result').innerHTML = dencripted.join(' ');
-    document.getElementById('shadow').style.visibility = 'hidden';
-    if (tel === 0) {
-        tel = 1;
-        shadow();
+    if (encrypter.isEmpty(phrase)) {
+        const dencripted = encrypter.dencripter(phrase);
+        document.getElementById('result').innerHTML = dencripted.join(' ');
+        document.getElementById('shadow').style.visibility = 'hidden';
+        if (tel === 0) {
+            tel = 1;
+            shadow();
+        }
+    }
+    else {
+        document.getElementById('phrase').style.borderRadius = "2%";
+        document.getElementById('phrase').style.border = "1px solid #0A3871";
+        document.getElementById('phrase').style.fontSize = "225%"
+        setTimeout(function () {
+            document.getElementById('phrase').style.border = "";
+            document.getElementById('phrase').style.fontSize = "200%"
+        }, 1000);
     }
 });
 
@@ -114,37 +150,55 @@ document.getElementById('add-letter').addEventListener('click', (event) => {
     event.preventDefault();
 
     const letter = document.getElementById('letter').value;
-    const encrypted = document.getElementById('encrypted').value;
-    if (letter == encrypted[0]) {
-        if (!encrypted.includes(' ')) {
+    if (encrypter.isEmpty(letter)) {
+        const encrypted = document.getElementById('encrypted').value;
+        if (letter == encrypted[0]) {
+            if (!encrypted.includes(' ')) {
 
-            Edictionary[letter] = { encrypted };
-            Edictionary[letter].getEncrypted = function getEncrypted() {
-                return this.encrypted;
-            };
-            document.getElementById('encrypted').placeholder = "Valor cifrado";
-            document.getElementById('letter').value = '';
+                Edictionary[letter] = { encrypted };
+                Edictionary[letter].getEncrypted = function getEncrypted() {
+                    return this.encrypted;
+                };
+                document.getElementById('encrypted').placeholder = "Valor cifrado";
+                document.getElementById('letter').value = '';
+            }
+            else {
+                document.getElementById('encrypted').placeholder = "El valor ingresado tiene espacios";
+            }
         }
         else {
-            document.getElementById('encrypted').placeholder = "El valor ingresado tiene espacios";
+            document.getElementById('encrypted').placeholder = 'La letra ingresada no coincide con la primera letra del valor ingresado o ha ingresado más de una letra';
         }
+        document.getElementById('encrypted').value = '';
     }
     else {
-        document.getElementById('encrypted').placeholder = 'La letra ingresada no coincide con la primera letra del valor ingresado o ha ingresado más de una letra';
+        document.getElementById('letter').style.borderRadius = "2%";
+        document.getElementById('letter').style.border = "1px solid #0A3871";
+        setTimeout(function () {
+            document.getElementById('letter').style.border = "";
+        }, 1000);
     }
-    document.getElementById('encrypted').value = '';
 });
 
 document.getElementById('search-letter').addEventListener('click', (event) => {
     event.preventDefault();
 
     const letter = document.getElementById('letter').value;
-    if (Edictionary[letter]) {
-        document.getElementById('encrypted').value = Edictionary[letter].encrypted;
-        document.getElementById('encrypted').placeholder = "Valor cifrado";
+    if (encrypter.isEmpty(letter)) {
+        if (Edictionary[letter]) {
+            document.getElementById('encrypted').value = Edictionary[letter].encrypted;
+            document.getElementById('encrypted').placeholder = "Valor cifrado";
+        }
+        else {
+            document.getElementById('encrypted').placeholder = "La letra " + letter + " no tiene un value en nuestro diccionario";
+        }
     }
     else {
-        document.getElementById('encrypted').placeholder = "La letra " + letter + " no tiene un value en nuestro diccionario";
+        document.getElementById('letter').style.borderRadius = "2%";
+        document.getElementById('letter').style.border = "1px solid #0A3871";
+        setTimeout(function () {
+            document.getElementById('letter').style.border = "";
+        }, 1000);
     }
 });
 
