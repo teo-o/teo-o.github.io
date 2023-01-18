@@ -132,10 +132,8 @@ document.getElementById('decrypt-button').addEventListener('click', () => {
     else {
         document.getElementById('phrase').style.borderRadius = "2%";
         document.getElementById('phrase').style.border = "1px solid #0A3871";
-        document.getElementById('phrase').style.fontSize = "225%"
         setTimeout(function () {
             document.getElementById('phrase').style.border = "";
-            document.getElementById('phrase').style.fontSize = "200%"
         }, 1000);
     }
 });
