@@ -80,21 +80,66 @@ class Encrypter {
 }
 
 const encrypter = new Encrypter();
+const screen = window.innerWidth;
+initial = setTimeout(initialy(), 0);
+
+function initialy() {
+    identificadordeWindow = setInterval(windowSize, 50);
+}
+function windowSize() {
+
+    screen1 = window.innerWidth;
+
+    if(screen1 < 991.98){
+        document.getElementById('result').rows = 5;
+        document.getElementById('phrase').rows = 5;
+        document.getElementById('letter').rows = 3;
+        document.getElementById('encrypted').rows = 3;
+    }
+    else if(screen1 > 991.98){
+        document.getElementById('result').rows = 11;
+        document.getElementById('phrase').rows = 11;
+        document.getElementById('letter').rows = 7;
+        document.getElementById('encrypted').rows = 7;
+    }
+}
+
+if (screen < 991.98) {
+    document.getElementById('result').rows = 5;
+    document.getElementById('phrase').rows = 5;
+    document.getElementById('letter').rows = 3;
+    document.getElementById('encrypted').rows = 3;
+}
 var tel = 0;
 
 function shadow() {
-    identificadorIntervaloDeTiempo = setInterval(shadown, 1000);
+    identificadorIntervaloDeTiempo = setInterval(shadown, 50);
 }
 
 function shadown() {
     const phrase = document.getElementById('phrase').value;
     const encrypted = encrypter.encrypter(phrase);
+    const screenWidth = window.innerWidth;
     if (document.getElementById('phrase').value === '') {
-        document.getElementById('shadow').style.visibility = 'visible';
+        const result = document.getElementById('result');
+        result.value = '';
+        if (screenWidth > 991.98) {
+            result.placeholder = '';
+        }
+        else {
+            result.placeholder = 'Resultado';
+        }
+        result.style.backgroundImage = "url('../images/muneco1.png')";
+        result.style.backgroundRepeat = "no-repeat";
+        result.style.backgroundSize = "80% 90%";
+        result.style.backgroundPositionX = "center";
+        result.style.backgroundPositionY = "3%";
         document.getElementById('result').innerHTML = encrypted.join(' ');
     }
     else {
-        document.getElementById('shadow').style.visibility = 'hidden';
+        document.getElementById('result').style.backgroundColor = 'white';
+        document.getElementById('result').style.backgroundImage = 'none';
+        document.getElementById('result').placeholder = 'Resultado';
     }
 }
 
@@ -102,8 +147,7 @@ document.getElementById('encrypt-button').addEventListener('click', () => {
     const phrase = document.getElementById('phrase').value;
     if (encrypter.isEmpty(phrase)) {
         const encrypted = encrypter.encrypter(phrase);
-        document.getElementById('result').innerHTML = encrypted.join(' ');
-        document.getElementById('shadow').style.visibility = 'hidden';
+        document.getElementById('result').value = encrypted.join(' ');
         if (tel === 0) {
             tel = 1;
             shadow();
@@ -122,8 +166,7 @@ document.getElementById('decrypt-button').addEventListener('click', () => {
     const phrase = document.getElementById('phrase').value;
     if (encrypter.isEmpty(phrase)) {
         const dencripted = encrypter.dencripter(phrase);
-        document.getElementById('result').innerHTML = dencripted.join(' ');
-        document.getElementById('shadow').style.visibility = 'hidden';
+        document.getElementById('result').value = dencripted.join(' ');
         if (tel === 0) {
             tel = 1;
             shadow();
@@ -159,6 +202,7 @@ document.getElementById('add-letter').addEventListener('click', (event) => {
                 };
                 document.getElementById('encrypted').placeholder = "Valor cifrado";
                 document.getElementById('letter').value = '';
+                document.getElementById('phrase').focus();
             }
             else {
                 document.getElementById('encrypted').placeholder = "El valor ingresado tiene espacios";

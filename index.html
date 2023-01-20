@@ -6,84 +6,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="CSS\style.css" />
     <link rel="shortcut icon" href="images/alura2.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>Encriptador de texto</title>
   </head>
-  <body>
-    <header>
-      <div class="containerLogo">
-        <a href="index.html" class="aLogo"
-          ><img src="images\alura2.png" alt="Logo de alura" class="logo"
-        /></a>
+  <body class="--bs-body-bg">
+    <header class="navbar">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="images\alura2.png" width="30" alt="Logo de la página web">
+        </a>
       </div>
     </header>
     <main>
-      <div class="containerEncryp">
-        <div class="areatxt">
+      <div class="containerEncryp d-flex flex-wrap">
+        <div class="areatxt1 col-sm-12 col-lg-6">
           <textarea
             class="texto"
             id="phrase"
             placeholder="Ingrese el texto aqui"
+            rows="11"
           ></textarea>
-          <textarea class="texto" id="result" placeholder="Resultado"></textarea>
-          <div class="result" id="shadow"> 
-            <img src="images\muneco.png" alt="muneco" class="muneco">
-            <h2>
-              Ningún mensaje fue encontrado
-            </h2>
-            <p>
-              Ingresa el texto que desees encriptar o desencriptar.
-            </p>
-          </div>
-        </div>
-        <div id="caja-buttons">
-          <input
-            type="button"
+          <div class="buttons-container d-flex flex-wrap">
+            <input
+            type="button btn-primary btn-lg"
             value="Encriptar"
             class="buttons"
             id="encrypt-button"
-          />
-          <input
-            type="button"
+            />
+            <input
+            type="button btn-secondary btn-lg"
             value="Desencriptar"
             class="buttons"
             id="decrypt-button"
-          />
-          <div class="space">
-
+            />
           </div>
-          <input
-            type="button"
-            value="Copiar"
-            class="buttons"
-            id="copy-button"
-          />
+        </div>
+        <div class="areatxt2 col-sm-12 col-lg-6 rounded shadow white" id="shadown">
+          <textarea type="text" class="texto" id="result" readonly rows="11"></textarea>
+          <div class="buttons-container white">
+            <input
+              type="button btn-secondary btn-lg""
+              value="Copiar"
+              class="buttons"
+              id="copy-button"
+            />
+          </div>
         </div>
       </div>
-      <div class="containerDict">
+      <div class="containerDict d-flex flex-wrap">
         <h2 id="dicty">Diccionario</h2>
         <p>
           Para agregar una nueva letra al diccionario sigue la regla de que su
           value debe empezar con la letra que quieres agregar; si vas a
           agregar la letra "b" su value debe empezar con "b" y asi sucesivamente.
         </p>
-        <div class="areatxt1">
-          <textarea type="text" class="texto" id="letter" name="letter" placeholder="Letra"></textarea>
-          <textarea type="text" class="texto" id="encrypted" name="encrypted" placeholder="Valor cifrado"></textarea>
+        <div class="areatxt1 col-sm-12 col-lg-6">
+          <textarea type="text" class="texto" id="letter" name="letter" placeholder="Letra" rows="7"></textarea>
+          <div class="buttons-container d-flex flex-wrap">
+            <input
+            type="button btn-primary btn-lg"
+            value="Agregar"
+            id="add-letter"
+            class="buttons"
+            />
+              <input
+              type="button btn-secondary btn-lg"
+              value="Buscar"
+              class="buttons"
+              id="search-letter"
+            />
+          </div>
         </div>
-        <div id="caja-buttons1">
-        <button type="button" class="buttons" id="add-letter">Añadir letra</button>
-        <button type="button" class="buttons" id="search-letter">Buscar letra</button>
+        <div class="areatxt2 col-sm-12 col-lg-6">
+          <textarea type="text" class="texto" id="encrypted" name="encrypted" placeholder="Valor cifrado" rows="7"></textarea>
         </div>
       </div>
-      <div class="footer">
-        <p>
-          Sitio desarrollado por <a href="https://www.linkedin.com/in/mateo-orozco-java/" target="_blank">Mateo Orozco</a> para el programa 
-          <a href="https://www.oracle.com/ar/education/oracle-next-education/" target="_blank"> 
-            Oracle One Next Education
-          </a>
-        </p>
-      </div>
-      <script src="app.js"></script>
     </main>
+    <footer>
+      <p>
+        Sitio desarrollado por <a href="https://www.linkedin.com/in/mateo-orozco-java/" target="_blank">Mateo Orozco</a> para el programa 
+        <a href="https://www.oracle.com/co/education/oracle-next-education/" target="_blank"> 
+          Oracle One Next Education
+        </a>
+      </p>
+    </footer>
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>

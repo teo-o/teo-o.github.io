@@ -6,111 +6,59 @@
   background-color: #F3F5FC;;
   font-family: "Poor Story", cursive;
 }
-
-body{
-  width: 100%;
-  height: 100%;
+.--bs-body-bg{
+  background-color: #F3F5FC;
 }
-
-header {
-  display: flex;
-  position: absolute;
-  width: 60%;
-  height: 8.59375%;
-}
-
-.containerLogo{
-  display: flex;
-  position: relative;
-  width: 13.88888%;
-  height: 55.5555%;
-  margin-left:  4.629%;
-  top: 45.04545%;
-}
-
-.aLogo{
-  position: relative;
-  display: flex;
-  margin: 0 auto;
-}
-
-.logo {
-    width: 100%;
-    cursor: pointer;
-}
-
-main{
-  position: absolute;
-  display: block;
-  margin-top: 8.59375%;
-  margin-left: 16.666666666666666666666666666667%;
-  width: 75%;
-  height: 91.40625%;
-}
-
 .containerEncryp{
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 85%;
+  margin-left: 13%;
+  margin-right: 6%;
 }
 
-.areatxt{
-  display:flex;
-  position: relative;
+.areatxt1{
+  height: 100%;
   width: 100%;
-  height: 80%;
+}
+
+.buttons-container{
+  justify-content: space-between;
+  padding: 1.7%;
+  text-align: center;
+}
+
+.areatxt2{
+  height: 100%;
+  width: 100%;
+  text-align: center;
 }
 
 #result {
-  position:relative;
-  margin-left: 15%;
+  width: 100%;
   background-color: white;
+  background-image: url('../images/muneco1.png');
+  background-repeat: no-repeat;
+  background-size: 80% 90%;
+  background-position-x: center;
+  background-position-y: 3%;
 }
 
 #result::selection {
   background-color: transparent;
 }
 
-#shadow {
-  position: absolute;
-  visibility: visible;
-  width: 43%;
-  height: 110%;
-  text-align: center;
-  margin-left: 57.5%;
-}
-
-.muneco{
-  position: relative;
-  display: flex;
-  margin: 0 auto;
-  margin-top: 5%;
-  width: 80%;
-  height: 70%;
-}
-
-#shadow h2{
-  margin-top: 5%;
-  color: #0A3871;
-}
-
-
-#caja-buttons{
-  display: inline-flex;
-  position: relative;
-  margin-top: 5%;
-  height: 10%;
-  width: 100%;
+.white{
+  background-color: white;
 }
 
 .buttons{
-  padding: 1.7% 4.5%;
+  padding: 3%;
   border-radius: 5px;
-  margin-right: 11%;
+  text-align: center;
   font-size: 100%;
 }
 
+#encrypt-button {
+  margin-left: 0;
+}
 #encrypt-button {
   background-color: #0A3871;
   color: #F3F5FC;
@@ -123,6 +71,9 @@ main{
   border: 1px solid #0A3871;
 }
 
+#decrypt-button {
+  margin-right: 2%;
+}
 #decrypt-button {
   background-color: #F3F5FC;
   color: #0A3871;
@@ -146,20 +97,13 @@ main{
   border: 1px solid #F3F5FC;
 }
 
-.space {
-  width: 22%;
-  height: auto;
-  display: inline-block;
+#encrypt-button, #decrypt-button, #copy-button{
+  padding: 3%;
+  font-size: 95%;
 }
-
-#encrypted {
-  position: relative;
-  margin-left: 15%;
-}
-
 .texto{
-  width: 42.069444444444444444444444444444%;
-  height: 100%;
+  width: 100%;
+  height: 70%;
   background: #F3F5FC;
   margin-top: 1%;
   border: none;
@@ -170,38 +114,28 @@ main{
   padding: 1.5%;
 }
 
-.containerDict{
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 85%;
-  margin-top: 1.8%;
-}
 
+.containerDict{
+    margin-left: 13%;
+    margin-top: 3%;
+    margin-right: 6%;
+    height: 100%;
+}
 .containerDict h2{
   text-align: center;
   color: #0A3871;
+  width: 100%;
 }
 
 .containerDict p{
   margin-top: 0.5%;
-}
-
-.areatxt1{
-  display:flex;
-  position: relative;
-  width: 100%;
-  height: 70%;
-}
-
-#caja-buttons1{
-  display: inline-flex;
-  position: relative;
-  margin-top: 5%;
-  height: 10%;
   width: 100%;
 }
 
+
+#add-letter {
+  margin-left: 0;
+}
 #add-letter{
   background-color: #0A3871;
   color: #F3F5FC;
@@ -214,6 +148,9 @@ main{
 }
 
 #search-letter {
+  margin-right: 0%;
+}
+#search-letter {
   background-color: #F3F5FC;
   color: #0A3871;
   border: 1px solid #0A3871;
@@ -224,21 +161,46 @@ main{
   border: 1px solid #F3F5FC;
 }
 
-.footer{
-  position: relative;
-  display: block;
+footer{
   width: 100%;
-  height: auto;
-  margin-top: 5%;
+  margin-top: 2%;
 }
 
-.footer p{
+footer p{
   font-size: 120%;
   text-align: center;
   padding: 1.7%;
 }
-.footer a{
+footer a{
   font-weight: 900;
   text-decoration: none;
   color: #0A3871;
+}
+
+@media (max-width: 991.98px) {
+  #result {
+    background-image: none !important;
+    background-color: white;
+  }
+}
+
+@media (max-width: 402px) {
+  #encrypt-button, #decrypt-button, #copy-button{
+    padding: 1%;
+    font-size: 95%;
+  }
+}
+
+@media (max-width: 397px) {
+  #add-letter, #search-letter {
+    padding: 1%;
+    font-size: 95%;
+  }
+}
+
+@media (max-width: 361px) {
+  #encrypt-button, #decrypt-button, #copy-button, #add-letter, #search-letters{
+    padding: 0.5%;
+    font-size: 95%;
+  }
 }
