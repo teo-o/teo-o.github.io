@@ -90,13 +90,13 @@ function windowSize() {
 
     screen1 = window.innerWidth;
 
-    if(screen1 < 991.98){
+    if (screen1 < 991.98) {
         document.getElementById('result').rows = 5;
         document.getElementById('phrase').rows = 5;
         document.getElementById('letter').rows = 3;
         document.getElementById('encrypted').rows = 3;
     }
-    else if(screen1 > 991.98){
+    else if (screen1 > 991.98) {
         document.getElementById('result').rows = 11;
         document.getElementById('phrase').rows = 11;
         document.getElementById('letter').rows = 7;
@@ -142,42 +142,57 @@ function shadown() {
         document.getElementById('result').placeholder = 'Resultado';
     }
 }
+function alerta(title, message, type, focus) {
+    swal({
+        title: title,
+        text: message,
+        icon: type,
+        button: "Aceptar",
+    }).then(() => {
+        document.getElementById(focus).focus();
+    });
+}
+function ValidateCharacter(phrase, focus) {
+    const cadenaTxt = '^[a-z0-9 ñ,.!¡¿?_\n]+$';
+    if (phrase.match(cadenaTxt) == null) {
+        alerta("Caracteres no válidos", 'Solo se permiten letras minusculas', "warning", focus)
+        return false;
+    }
+    return true;
+}
+
 
 document.getElementById('encrypt-button').addEventListener('click', () => {
     const phrase = document.getElementById('phrase').value;
     if (encrypter.isEmpty(phrase)) {
-        const encrypted = encrypter.encrypter(phrase);
-        document.getElementById('result').value = encrypted.join(' ');
-        if (tel === 0) {
-            tel = 1;
-            shadow();
+        if (ValidateCharacter(phrase, "phrase")) {
+            const encrypted = encrypter.encrypter(phrase);
+            document.getElementById('result').value = encrypted.join(' ');
+            if (tel === 0) {
+                tel = 1;
+                shadow();
+            }
         }
     }
     else {
-        document.getElementById('phrase').style.borderRadius = "2%";
-        document.getElementById('phrase').style.border = "1px solid #0A3871";
-        setTimeout(function () {
-            document.getElementById('phrase').style.border = "";
-        }, 1000);
+        alerta("Ningún mensaje se ha encontrado", 'Ingrese el texto que desea encriptar o desenciptar', "warning", "phrase")
     }
 });
 
 document.getElementById('decrypt-button').addEventListener('click', () => {
     const phrase = document.getElementById('phrase').value;
     if (encrypter.isEmpty(phrase)) {
-        const dencripted = encrypter.dencripter(phrase);
-        document.getElementById('result').value = dencripted.join(' ');
-        if (tel === 0) {
-            tel = 1;
-            shadow();
+        if (ValidateCharacter(phrase, "phrase")) {
+            const dencripted = encrypter.dencripter(phrase);
+            document.getElementById('result').value = dencripted.join(' ');
+            if (tel === 0) {
+                tel = 1;
+                shadow();
+            }
         }
     }
     else {
-        document.getElementById('phrase').style.borderRadius = "2%";
-        document.getElementById('phrase').style.border = "1px solid #0A3871";
-        setTimeout(function () {
-            document.getElementById('phrase').style.border = "";
-        }, 1000);
+        alerta("Ningún mensaje se ha encontrado", 'Ingrese el texto que desea encriptar o desenciptar', "warning", "phrase")
     }
 });
 
@@ -192,33 +207,31 @@ document.getElementById('add-letter').addEventListener('click', (event) => {
 
     const letter = document.getElementById('letter').value;
     if (encrypter.isEmpty(letter)) {
-        const encrypted = document.getElementById('encrypted').value;
-        if (letter == encrypted[0]) {
-            if (!encrypted.includes(' ')) {
+        if (ValidateCharacter(letter, "letter")) {
+            const encrypted = document.getElementById('encrypted').value;
+            if (letter == encrypted[0]) {
+                if (!encrypted.includes(' ')) {
 
-                Edictionary[letter] = { encrypted };
-                Edictionary[letter].getEncrypted = function getEncrypted() {
-                    return this.encrypted;
-                };
-                document.getElementById('encrypted').placeholder = "Valor cifrado";
-                document.getElementById('letter').value = '';
-                document.getElementById('phrase').focus();
+                    Edictionary[letter] = { encrypted };
+                    Edictionary[letter].getEncrypted = function getEncrypted() {
+                        return this.encrypted;
+                    };
+                    document.getElementById('encrypted').placeholder = "Valor cifrado";
+                    document.getElementById('letter').value = '';
+                    document.getElementById('phrase').focus();
+                }
+                else {
+                    alerta("Valor no posible", 'El valor ingresado no puede contener espacios', "warning", "encrypted");
+                }
             }
             else {
-                document.getElementById('encrypted').placeholder = "El valor ingresado tiene espacios";
+                alerta("Valor no posible", 'La letra ingresada no coincide con la primera letra del valor ingresado o ha ingresado más de una letra', "warning", "encrypted");
             }
+            document.getElementById('encrypted').value = '';
         }
-        else {
-            document.getElementById('encrypted').placeholder = 'La letra ingresada no coincide con la primera letra del valor ingresado o ha ingresado más de una letra';
-        }
-        document.getElementById('encrypted').value = '';
     }
     else {
-        document.getElementById('letter').style.borderRadius = "2%";
-        document.getElementById('letter').style.border = "1px solid #0A3871";
-        setTimeout(function () {
-            document.getElementById('letter').style.border = "";
-        }, 1000);
+        alerta("Ningún letra se ha encontrado", 'Ingrese la letra que desea buscar o agregar', "warning", "letter")
     }
 });
 
@@ -227,20 +240,23 @@ document.getElementById('search-letter').addEventListener('click', (event) => {
 
     const letter = document.getElementById('letter').value;
     if (encrypter.isEmpty(letter)) {
-        if (Edictionary[letter]) {
-            document.getElementById('encrypted').value = Edictionary[letter].encrypted;
-            document.getElementById('encrypted').placeholder = "Valor cifrado";
+        if (letter.length > 1) {
+            alerta("Valor no posible", 'No puede contener más de una letra', "warning", "letter");
         }
         else {
-            document.getElementById('encrypted').placeholder = "La letra " + letter + " no tiene un value en nuestro diccionario";
+            if (ValidateCharacter(letter, "letter")) {
+                if (Edictionary[letter]) {
+                    document.getElementById('encrypted').value = Edictionary[letter].encrypted;
+                    document.getElementById('encrypted').placeholder = "Valor cifrado";
+                }
+                else {
+                    alerta("Valor no encontrado", 'El valor cifrado de la letra ' + letter + ' no se encuentra en el diccionario, puedes agregarla', "warning", "encrypted");
+                }
+            }
         }
     }
     else {
-        document.getElementById('letter').style.borderRadius = "2%";
-        document.getElementById('letter').style.border = "1px solid #0A3871";
-        setTimeout(function () {
-            document.getElementById('letter').style.border = "";
-        }, 1000);
+        alerta("Ningún letra se ha encontrado", 'Ingrese la letra que desea buscar o agregar', "warning", "letter")
     }
 });
 

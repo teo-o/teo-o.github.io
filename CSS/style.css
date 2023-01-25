@@ -3,7 +3,7 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: #F3F5FC;;
+  /* background-color: #F3F5FC; */
   font-family: "Poor Story", cursive;
 }
 .--bs-body-bg{
@@ -12,6 +12,19 @@
 .containerEncryp{
   margin-left: 13%;
   margin-right: 6%;
+}
+
+.swal-title{
+  color: #0A3871;
+}
+
+.swal-text{
+  color: black;
+}
+
+.swal-button{
+  background-color: #0A3871;
+  color: #F3F5FC;
 }
 
 .areatxt1{
@@ -29,6 +42,7 @@
   height: 100%;
   width: 100%;
   text-align: center;
+  margin-left: 5%;
 }
 
 #result {
@@ -36,7 +50,7 @@
   background-color: white;
   background-image: url('../images/muneco1.png');
   background-repeat: no-repeat;
-  background-size: 80% 90%;
+  background-size: 100% 90%;
   background-position-x: center;
   background-position-y: 3%;
 }
@@ -53,7 +67,8 @@
   padding: 3%;
   border-radius: 5px;
   text-align: center;
-  font-size: 100%;
+  width: 30%;
+  font-size: auto;
 }
 
 #encrypt-button {
@@ -182,25 +197,32 @@ footer a{
     background-image: none !important;
     background-color: white;
   }
+  .areatxt2{
+    margin-left: 0%;
+  }
+  #encrypt-button, #decrypt-button, #copy-button{
+    width: 40%;
+  }
 }
 
 @media (max-width: 402px) {
-  #encrypt-button, #decrypt-button, #copy-button{
-    padding: 1%;
-    font-size: 95%;
-  }
+  
 }
 
 @media (max-width: 397px) {
   #add-letter, #search-letter {
-    padding: 1%;
-    font-size: 95%;
+    width: 45%;
   }
 }
 
 @media (max-width: 361px) {
   #encrypt-button, #decrypt-button, #copy-button, #add-letter, #search-letters{
-    padding: 0.5%;
-    font-size: 95%;
+    width: 48%;
+  }
+}
+
+@media (max-width: 219px) {
+  #encrypt-button, #decrypt-button, #copy-button, #add-letter, #search-letters{
+    font-size: 80%;
   }
 }
